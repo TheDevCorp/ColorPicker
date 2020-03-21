@@ -1,30 +1,36 @@
-<div class="contianer-fluid my-2 px-4 py-3">
-    <h2 class="m-0">Grey</h2>
-    <hr class="m-0 mx-auto my-1" />
-    <div class="p-3 row justify-content-center">
-        <div class="m-2 depth" *ngFor="let obj of colors_data.grey; let i = index">
-            <div class="card hover cursor-pointer" [ngStyle]="{'background-color': obj.hex}" (click)="flip(i, 'grey')">
-                <div *ngIf="!obj.show_details" class="card-body row justify-content-center align-items-center">
-                    <strong><span class="text text-center">View Details</span></strong>
-                </div>
-                <div *ngIf="obj.show_details" class="row py-1 px-2 justify-content-center align-items-center">
-                    <div class="alert alert-primary p-0 my-1 text-center cursor-pointer hover" (click)="copy(obj.hex)">
-                        <strong>HEX</strong>
-                    </div>
-                    <div class="alert alert-secondary p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.rgb)">
-                        <strong>RGB</strong>
-                    </div>
-                    <div class="alert alert-danger p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.cmyk)">
-                        <strong>CMYK</strong>
-                    </div>
-                    <div class="alert alert-success p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.hsv)">
-                        <strong>HSV</strong>
-                    </div>
-                    <div class="alert alert-warning p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.hsl)">
-                        <strong>HSL</strong>
+<div style="margin-top: 50px !important;">
+    <div class="contianer-fluid my-2 px-4 py-3">
+        <div *ngFor="let obj of colors_data; let i = index">
+            <div class="m-0" style="width: 100%;">
+                <span class="h2">{{obj.name}}</span>
+                <span class="ml-auto float-right">
+                    <button class="btn btn-outline-danger" (click)="reset(i)" tabindex="-1">Reset</button>
+                </span>
+            </div>
+            <hr class="m-0 mx-auto my-1" />
+            <div class="p-3 row justify-content-center">
+                <div class="m-2 depth" *ngFor="let data of obj.data; let ii = index">
+                    <div class="card hover cursor-pointer justify-content-center align-items-center modBorder"
+                        [ngStyle]="{'background-color': data.hex}" (click)="flip(i, ii)">
+                        <div *ngIf="!data.show_details">
+                            <strong><span class="text text-center copytext">Click to Copy!</span></strong>
+                        </div>
+                        <div *ngIf="data.show_details" style="width: 100%;">
+                            <div class="alert alert-success p-0 my-3 mx-auto text-center cursor-pointer hover"
+                                (click)="copy(data.hex)">
+                                <strong>HEX</strong>
+                            </div>
+                            <div class="alert alert-warning p-0 my-3 mx-auto text-center cursor-pointer hover"
+                                (click)="copy(rgb(data.hex))">
+                                <strong>RGB</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="alert alert-warning snack m-0 mx-auto text-center animated fadeIn" *ngIf="snack">
+        <span class="text-center">Copied to Clipboard!</span>
     </div>
 </div>

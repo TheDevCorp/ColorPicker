@@ -1,1 +1,30 @@
-<p>home works!</p>
+<div class="contianer-fluid my-2 px-4 py-3">
+    <h2 class="m-0">Grey</h2>
+    <hr class="m-0 mx-auto my-1" />
+    <div class="p-3 row justify-content-center">
+        <div class="m-2 depth" *ngFor="let obj of colors_data.grey; let i = index">
+            <div class="card hover cursor-pointer" [ngStyle]="{'background-color': obj.hex}" (click)="flip(i, 'grey')">
+                <div *ngIf="!obj.show_details" class="card-body row justify-content-center align-items-center">
+                    <strong><span class="text text-center">View Details</span></strong>
+                </div>
+                <div *ngIf="obj.show_details" class="row py-1 px-2 justify-content-center align-items-center">
+                    <div class="alert alert-primary p-0 my-1 text-center cursor-pointer hover" (click)="copy(obj.hex)">
+                        <strong>HEX</strong>
+                    </div>
+                    <div class="alert alert-secondary p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.rgb)">
+                        <strong>RGB</strong>
+                    </div>
+                    <div class="alert alert-danger p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.cmyk)">
+                        <strong>CMYK</strong>
+                    </div>
+                    <div class="alert alert-success p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.hsv)">
+                        <strong>HSV</strong>
+                    </div>
+                    <div class="alert alert-warning p-0 m-1 text-center cursor-pointer hover" (click)="copy(obj.hsl)">
+                        <strong>HSL</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

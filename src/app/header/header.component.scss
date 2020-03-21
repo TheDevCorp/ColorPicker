@@ -1,0 +1,50 @@
+.nav-logo {
+    width: 2em;
+}
+.color-changer {
+    animation-name: colorChange;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+@keyframes colorChange {
+    0% {
+        color: rgb(252, 186, 3);
+    }
+    10% {
+        color: rgb(252, 86, 3);
+    }
+    20% {
+        color: rgb(252, 3, 3);
+    }
+    30% {
+        color: rgb(252, 3, 148);
+    }
+    40% {
+        color: rgb(244, 3, 252);
+    }
+    50% {
+        color: rgb(157, 3, 252);
+    }
+    60% {
+        color: rgb(36, 3, 252);
+    }
+    70% {
+        color: rgb(3, 165, 252);
+    }
+    80% {
+        color: rgb(3, 252, 211);
+    }
+    90% {
+        color: rgb(3, 252, 74);
+    }
+    100% {
+        color: rgb(115, 252, 3);
+    }
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1069;
+}
